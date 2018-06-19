@@ -327,7 +327,7 @@ impl<'a, 'tcx> Visitor<'tcx> for RefVisitor<'a, 'tcx> {
             TyPath(ref path) => {
                 self.collect_anonymous_lifetimes(path, ty);
             },
-            TyImplTraitExistential(ref exist_ty, _) => {
+            TyImplTraitExistential(ref exist_ty, _, _) => {
                 for bound in &exist_ty.bounds {
                     if let RegionTyParamBound(_) = *bound {
                         self.record(&None);
